@@ -31,15 +31,16 @@ RSpec.describe FizzBuzzer, "#call" do
 
   context "with an argument that can be coerced to an Integer" do
     it "works" do
+      fizzbuzzed = FizzBuzzer.('7')
+      expect(fizzbuzzed).to eq 7
     end
   end
 
   context "with an argument that cannot be coerced to a Integer" do
-    it "raises an ArguementError" do
+    it "raises an ArgumentError" do
+      expect {
+        FizzBuzzer.('not_a_number')
+      }.to raise_error(ArgumentError)
     end
   end
-
-  context "with a negative number" do
-  end
-
 end
