@@ -8,4 +8,14 @@ RSpec.describe FizzbuzzController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
+    context "with ?page=1" do
+
+    end
+
+    context "with ?page=10" do
+    end
+
+    context "with ?per_page=20" do
+    end
+
 end
