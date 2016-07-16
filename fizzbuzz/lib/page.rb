@@ -1,14 +1,13 @@
-require 'fizzbuzzer'
 
 class Page
   include Enumerable
 
-  def initialize(page: 1, per_page: 10, starts_at: 1, processor: FizzBuzzer )
+  def initialize(page: 1, per_page: 100, starts_at: 1, fetcher:)
     @page = Integer(page)
     @per_page = Integer(per_page)
     @starts_at = Integer(starts_at)
 
-    @page_items = (start_range..end_range).map {|item_number| processor.call(item_number) }
+    @page_items = (start_range..end_range).map {|item_number| fetcher.(item_number) }
   end
 
   def each(&block)
