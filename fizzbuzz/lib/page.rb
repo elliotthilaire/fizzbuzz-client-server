@@ -1,13 +1,12 @@
-
 class Page
   include Enumerable
 
-  def initialize(page: 1, per_page: 100, starts_at: 1, fetcher:)
+  def initialize(page: 1, per_page: 100, starts_at: 1, &block)
     @page = Integer(page)
     @per_page = Integer(per_page)
     @starts_at = Integer(starts_at)
 
-    @page_items = (start_range..end_range).map {|item_number| fetcher.(item_number) }
+    @page_items = item_numbers.map {|item_number| yield(item_number) }
   end
 
   def each(&block)
@@ -15,6 +14,10 @@ class Page
   end
 
 private
+
+  def item_numbers
+    (start_range..end_range)
+  end
 
   def start_range
     @starts_at + (@page * @per_page) - @per_page
