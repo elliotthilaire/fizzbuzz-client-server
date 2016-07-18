@@ -1,5 +1,10 @@
 class FizzbuzzController < ApplicationController
   def index
-    @fizzbuzzes = Page.new { |item_number| Fizzbuzz.new(item_number) }
+    page = params[:page] || 1
+    per_page = params[:per_page] || 10
+
+    @fizzbuzzes = Page.new(page: page, per_page: per_page) do |item_number|
+      Fizzbuzz.new(item_number)
+    end
   end
 end
