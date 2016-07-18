@@ -1,0 +1,1 @@
+../../../fizzbuzz/lib/page.rb
