@@ -1,4 +1,4 @@
-class FizzBuzzer
+class Fizzbuzzer
   def self.call(arg)
     number = Integer(arg)
 

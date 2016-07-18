@@ -1,37 +1,37 @@
 require_relative "../lib/fizzbuzzer"
 
-RSpec.describe FizzBuzzer, "#call" do
+RSpec.describe Fizzbuzzer, "#call" do
   context "with an number divisible by 3" do
     it "returns 'Fizz'" do
-      fizzbuzzed = FizzBuzzer.(3)
+      fizzbuzzed = Fizzbuzzer.(3)
       expect(fizzbuzzed).to eq 'Fizz'
     end
   end
 
   context "with a number divisible by 5" do
     it "returns 'Buzz'" do
-      fizzbuzzed = FizzBuzzer.(5)
+      fizzbuzzed = Fizzbuzzer.(5)
       expect(fizzbuzzed).to eq 'Buzz'
     end
   end
 
   context "with a number divisible by 3 and 5" do
     it "returns 'FizzBuzz'" do
-      fizzbuzzed = FizzBuzzer.(3 * 5)
+      fizzbuzzed = Fizzbuzzer.(3 * 5)
       expect(fizzbuzzed).to eq 'FizzBuzz'
     end
   end
 
   context "with a number not divisble by 3 or 5" do
     it "returns the number" do
-      fizzbuzzed = FizzBuzzer.(1)
+      fizzbuzzed = Fizzbuzzer.(1)
       expect(fizzbuzzed).to eq 1
     end
   end
 
   context "with an argument that can be coerced to an Integer" do
     it "works" do
-      fizzbuzzed = FizzBuzzer.('7')
+      fizzbuzzed = Fizzbuzzer.('7')
       expect(fizzbuzzed).to eq 7
     end
   end
@@ -39,7 +39,7 @@ RSpec.describe FizzBuzzer, "#call" do
   context "with an argument that cannot be coerced to a Integer" do
     it "raises an ArgumentError" do
       expect {
-        FizzBuzzer.('not_a_number')
+        Fizzbuzzer.('not_a_number')
       }.to raise_error(ArgumentError)
     end
   end
