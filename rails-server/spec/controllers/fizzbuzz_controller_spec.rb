@@ -9,7 +9,6 @@ RSpec.describe FizzbuzzController, type: :controller do
     end
 
     context "with ?page=1" do
-
     end
 
     context "with ?page=10" do
@@ -17,5 +16,5 @@ RSpec.describe FizzbuzzController, type: :controller do
 
     context "with ?per_page=20" do
     end
-
+  end
 end
