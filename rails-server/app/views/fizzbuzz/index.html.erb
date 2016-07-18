@@ -1,5 +1,14 @@
-<h1>Fizzbuzz#index</h1>
-<p>Find me in app/views/fizzbuzz/index.html.erb</p>
+<h1>Fizzbuzz</h1>
+
+<div>
+  <% unless @fizzbuzzes.page == 1 %>
+    <%= link_to "Previous", page: @fizzbuzzes.page - 1, per_page: @fizzbuzzes.per_page %>
+  <% end %>
+
+  Page <%= @fizzbuzzes.page %>
+
+  <%= link_to "Next", page: @fizzbuzzes.page + 1, per_page: @fizzbuzzes.per_page %>
+</div>
 
 <% @fizzbuzzes.each do |fizzbuzz| %>
   <div><%= fizzbuzz.number %>: <%= fizzbuzz.output %></div>

@@ -1,6 +1,8 @@
 class Page
   include Enumerable
 
+  attr_reader :page, :per_page
+
   def initialize(page: 1, per_page: 100, starts_at: 1, &block)
     @page = Integer(page)
     @per_page = Integer(per_page)
