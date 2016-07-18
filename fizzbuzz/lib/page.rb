@@ -24,6 +24,6 @@ private
   end
 
   def end_range
-    @starts_at + (@page * @per_page)
+    @starts_at + (@page * @per_page) - 1
   end
 end
