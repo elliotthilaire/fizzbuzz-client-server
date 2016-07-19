@@ -9,11 +9,6 @@ RSpec.describe FizzbuzzController, type: :controller do
         expect(response).to have_http_status(:success)
       end
 
-      it "renders the index template" do
-        get :index
-        expect(response).to render_template("index")
-      end
-
       it "loads a page of fizzbuzz results" do
       end
     end
