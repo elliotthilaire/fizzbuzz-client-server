@@ -12,4 +12,14 @@
 
 <% @fizzbuzzes.each do |fizzbuzz| %>
   <div><%= fizzbuzz.number %>: <%= fizzbuzz.output %></div>
+
+
+  <% unless Favourite.find_by(number: fizzbuzz.number) %>
+    <%= link_to "Add favourite", create_favourite_url(number: fizzbuzz.number), method: :post %>
+  <% end %>
+
+  <% if Favourite.find_by(number: fizzbuzz.number) %>
+    <%= link_to "Delete favourite", delete_favourite_url(number: fizzbuzz.number), method: :delete %>
+  <%end %>
+
 <% end %>

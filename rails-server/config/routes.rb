@@ -2,5 +2,7 @@ Rails.application.routes.draw do
   root 'fizzbuzz#index'
 
   get 'fizzbuzz/index'
-  resources :favourites, only: [:create, :destroy]
+
+  post 'favourites/:number', to: 'favourites#create', as: :create_favourite
+  delete 'favourites/:number', to: 'favourites#destroy', as: :delete_favourite
 end

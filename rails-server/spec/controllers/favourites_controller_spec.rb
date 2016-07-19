@@ -2,10 +2,17 @@ require 'rails_helper'
 
 RSpec.describe FavouritesController, type: :controller do
 
+  before { request.env["HTTP_REFERER"] = root_url }
+
   describe "POST #create" do
     context "when favourite does not exist" do
       it 'creates a favourite' do
-        expect { post :create, favourite: {number: 1} }.to change(Favourite, :count).by(1)
+        expect { post :create, number: 1 }.to change(Favourite, :count).by(1)
+      end
+
+      it 'redirects to previous url' do
+        pending
+        expect(response).to redirect_to :back
       end
     end
 
@@ -21,6 +28,11 @@ RSpec.describe FavouritesController, type: :controller do
       it 'deletes the favourite' do
         Favourite.create(number: 1)
         expect { delete :destroy, number: 1 }.to change(Favourite, :count).by(-1)
+      end
+
+      it 'redirects to previous url' do
+        pending
+        expect(response).to redirect_to :back
       end
     end
 
