@@ -1,5 +1,7 @@
 # FizzBuzz Rails
 
+Status: This is incomplete and still a work in progress.
+
 Code for a coding challenge.
 
 ## Task A: Ruby on Rails FizzBuzz application
