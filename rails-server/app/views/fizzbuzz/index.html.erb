@@ -1,25 +1,24 @@
 <h1>Fizzbuzz</h1>
 
 <div>
-  <% unless @fizzbuzzes.page == 1 %>
-    <%= link_to "Previous", page: @fizzbuzzes.page - 1, per_page: @fizzbuzzes.per_page %>
+  <% unless @page_of_fizzbuzzes.page == 1 %>
+    <%= link_to "Previous", page: @page_of_fizzbuzzes.page - 1, per_page: @page_of_fizzbuzzes.per_page %>
   <% end %>
 
-  Page <%= @fizzbuzzes.page %>
+  Page <%= @page_of_fizzbuzzes.page %>
 
-  <%= link_to "Next", page: @fizzbuzzes.page + 1, per_page: @fizzbuzzes.per_page %>
+  <%= link_to "Next", page: @page_of_fizzbuzzes.page + 1, per_page: @page_of_fizzbuzzes.per_page %>
 </div>
 
-<% @fizzbuzzes.each do |fizzbuzz| %>
+<% @page_of_fizzbuzzes.each do |fizzbuzz| %>
   <div><%= fizzbuzz.number %>: <%= fizzbuzz.output %></div>
 
-
-  <% unless Favourite.find_by(number: fizzbuzz.number) %>
-    <%= link_to "Add favourite", create_favourite_url(number: fizzbuzz.number), method: :post %>
+  <% unless fizzbuzz.favourite %>
+    <%= link_to "Add favourite", create_favourite_url(number: fizzbuzz.number), method: :post%>
   <% end %>
 
-  <% if Favourite.find_by(number: fizzbuzz.number) %>
-    <%= link_to "Delete favourite", delete_favourite_url(number: fizzbuzz.number), method: :delete %>
+  <% if fizzbuzz.favourite %>
+    <%= link_to "Delete favourite", delete_favourite_url(number: fizzbuzz.number), method: :delete%>
   <%end %>
 
 <% end %>
