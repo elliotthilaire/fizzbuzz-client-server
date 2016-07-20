@@ -1,24 +1,7 @@
 <h1>Fizzbuzz</h1>
 
-<div>
-  <% unless @page_of_fizzbuzzes.page == 1 %>
-    <%= link_to "Previous", page: @page_of_fizzbuzzes.page - 1, per_page: @page_of_fizzbuzzes.per_page %>
-  <% end %>
-
-  Page <%= @page_of_fizzbuzzes.page %>
-
-  <%= link_to "Next", page: @page_of_fizzbuzzes.page + 1, per_page: @page_of_fizzbuzzes.per_page %>
-</div>
+<%= render partial: 'page', locals: { page: @page_of_fizzbuzzes } %>
 
 <% @page_of_fizzbuzzes.each do |fizzbuzz| %>
-  <div><%= fizzbuzz.number %>: <%= fizzbuzz.output %></div>
-
-  <% unless fizzbuzz.favourite %>
-    <%= link_to "Add favourite", create_favourite_url(number: fizzbuzz.number), method: :post%>
-  <% end %>
-
-  <% if fizzbuzz.favourite %>
-    <%= link_to "Delete favourite", delete_favourite_url(number: fizzbuzz.number), method: :delete%>
-  <%end %>
-
+  <%= render partial: 'fizzbuzz', locals: { fizzbuzz: fizzbuzz } %>
 <% end %>

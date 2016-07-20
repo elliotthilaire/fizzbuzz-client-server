@@ -1,0 +1,11 @@
+<div>
+  <% unless page.page_number == 1 %>
+    <%= link_to "Previous", page: page.page_number - 1, per_page: page.per_page %>
+  <% end %>
+
+  Page <%= page.page_number %>
+
+  <%= link_to "Next", page: page.page_number + 1, per_page: page.per_page %>
+</div>
+
+
