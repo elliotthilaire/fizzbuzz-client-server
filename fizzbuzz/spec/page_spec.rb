@@ -13,7 +13,7 @@ RSpec.describe Page, "#new" do
   end
 
   it 'fetches the next page' do
-    page = Page.new(page: 2, per_page: 10) { |item_number| item_number }
+    page = Page.new(page_number: 2, per_page: 10) { |item_number| item_number }
     expect(page.first).to eq 11
   end
 
