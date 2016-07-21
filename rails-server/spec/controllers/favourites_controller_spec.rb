@@ -7,7 +7,7 @@ RSpec.describe FavouritesController, type: :controller do
   describe "POST #create" do
     context "when favourite does not exist" do
       it 'creates a favourite' do
-        expect { post :create, number: 1 }.to change(Favourite, :count).by(1)
+        expect { post :create, params: {number: 1} }.to change(Favourite, :count).by(1)
       end
 
       it 'redirects to previous url' do
@@ -27,7 +27,7 @@ RSpec.describe FavouritesController, type: :controller do
     context "when favourite exists" do
       it 'deletes the favourite' do
         Favourite.create(number: 1)
-        expect { delete :destroy, number: 1 }.to change(Favourite, :count).by(-1)
+        expect { delete :destroy, params: {number: 1} }.to change(Favourite, :count).by(-1)
       end
 
       it 'redirects to previous url' do
