@@ -5,7 +5,8 @@ class FavouritesController < ApplicationController
 
     respond_to do |format|
       if @favourite.save
-        format.html { redirect_to :back, notice: 'Favourite added.' }
+
+        format.html { redirect_back notice: 'Favourite added.', fallback_location: root_url }
         format.json { render json: @favourite, status: :created }
       else
         format.html { redirect_to :back, notice: @favourite.errors }
@@ -19,7 +20,7 @@ class FavouritesController < ApplicationController
 
     respond_to do |format|
       if @favourite.destroy
-        format.html { redirect_to :back, notice: 'Favourite removed.' }
+        format.html { redirect_back notice: 'Favourite removed.', fallback_location: root_url }
         format.json { head :no_content }
       else
         format.html { render 'what'}
