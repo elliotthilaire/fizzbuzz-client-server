@@ -1,6 +1,7 @@
 module Api
   module V1
     class FavouritesController < ApplicationController
+
       def create
         @favourite = Favourite.new(number: params[:number])
 
@@ -17,7 +18,7 @@ module Api
         if @favourite.destroy
           head :no_content
         else
-          render json: @favourite.errors, status: :unprocessable_entit
+          render json: @favourite.errors, status: :unprocessable_entity
         end
       end
 
