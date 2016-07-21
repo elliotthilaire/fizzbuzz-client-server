@@ -1,0 +1,11 @@
+<div>
+  <div><%= fizzbuzz.number %>: <%= fizzbuzz.output %></div>
+
+  <% unless fizzbuzz.favourite %>
+    <%= link_to "Add favourite", favourites_url(number: fizzbuzz.number), method: :post, remote: true %>
+  <% end %>
+
+  <% if fizzbuzz.favourite %>
+    <%= link_to "Delete favourite", favourite_url(number: fizzbuzz.number), method: :delete, remote: true%>
+  <%end %>
+</div>

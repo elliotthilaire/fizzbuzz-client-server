@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe FizzbuzzController, type: :controller do
+RSpec.describe FizzbuzzesController, type: :controller do
 
   describe "GET #index" do
     context "with defaults" do

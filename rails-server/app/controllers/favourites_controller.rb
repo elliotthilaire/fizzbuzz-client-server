@@ -5,10 +5,10 @@ class FavouritesController < ApplicationController
 
     respond_to do |format|
       if @favourite.save
-        format.html { redirect_to :back, notice: 'Favourite was successfully created.' }
-        format.json { render :show, status: :created, location: @favourite }
+        format.html { redirect_to :back, notice: 'Favourite added.' }
+        format.json { render json: @favourite, status: :created }
       else
-        format.html { }
+        format.html { redirect_to :back, notice: @favourite.errors }
         format.json { render json: @favourite.errors, status: :unprocessable_entity }
       end
     end
@@ -17,11 +17,14 @@ class FavouritesController < ApplicationController
   def destroy
     @favourite = Favourite.find_by(number: params[:number])
 
-    @favourite.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Favourite was successfully destroyed.' }
-      format.json { head :no_content }
+      if @favourite.destroy
+        format.html { redirect_to :back, notice: 'Favourite removed.' }
+        format.json { head :no_content }
+      else
+        format.html { render 'what'}
+        format.json { render json: @favourite.errors, status: :unprocessable_entity }
+      end
     end
   end
-
 end
