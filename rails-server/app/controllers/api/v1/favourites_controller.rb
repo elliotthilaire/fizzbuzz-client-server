@@ -15,10 +15,11 @@ module Api
       def destroy
         @favourite = Favourite.find_by(number: params[:number])
 
-        if @favourite.destroy
+        if @favourite && @favourite.destroy
+          @favourite.destroy
           head :no_content
         else
-          render json: @favourite.errors, status: :unprocessable_entity
+          head :not_found
         end
       end
 
