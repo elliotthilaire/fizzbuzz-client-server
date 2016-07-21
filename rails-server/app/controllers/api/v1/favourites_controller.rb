@@ -3,7 +3,7 @@ module Api
     class FavouritesController < ApplicationController
 
       def create
-        @favourite = Favourite.new(number: params[:number])
+        @favourite = Favourite.new(favourite_params)
 
         if @favourite.save
           render json: @favourite, status: :created
@@ -13,16 +13,18 @@ module Api
       end
 
       def destroy
-        @favourite = Favourite.find_by(number: params[:number])
+        @favourite = Favourite.find_by(favourite_params)
 
         if @favourite && @favourite.destroy
-          @favourite.destroy
           head :no_content
         else
           head :not_found
         end
       end
 
+      def favourite_params
+        params.permit(:number)
+      end
     end
   end
 end

@@ -8,31 +8,31 @@ RSpec.describe FizzbuzzesController, type: :controller do
         get :index
         expect(response).to have_http_status(:success)
       end
+    end
 
-      it "loads a page of fizzbuzz results" do
+    context "with page specified" do
+      it 'returns https success' do
+        get :index, params: { page: 2 }
+        expect(response).to have_http_status(:success)
       end
     end
 
-    context "with ?page=1" do
-    end
-
-    context "with ?page=10" do
-    end
-
-    context "with ?per_page=20" do
-    end
-
-    context "with invalid ?page" do
+    context "with invalid page specified" do
       it "returns http bad request" do
-        pending
         get :index, params: { page: 'not_a_number' }
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    context "with invalid ?per_page" do
-      it "returns http bad request" do
-        pending
+    context "with per_page specified" do
+      it "returns https success" do
+        get :index, params: { per_page: 'not_a_number' }
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context "with invalid per_page specified" do
+      it "returns https success" do
         get :index, params: { per_page: 'not_a_number' }
         expect(response).to have_http_status(:bad_request)
       end
