@@ -8,7 +8,7 @@ RSpec.describe "Fizzbuzz", :type => :request do
 
   describe 'listing fizzbuzzes' do
     it "lists fizzbuzzes" do
-      get "/api/v1/fizzbuzzes", {}, headers
+      get "/api/v1/fizzbuzzes", params: {}, headers: headers
       expect(response.content_type).to eq("application/json")
       expect(response).to have_http_status(:ok)
     end
