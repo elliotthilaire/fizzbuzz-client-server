@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Fizzbuzzes", :type => :request do
+RSpec.describe "Fizzbuzz", :type => :request do
 
   let(:headers) do
     { "ACCEPT" => "application/json" }
