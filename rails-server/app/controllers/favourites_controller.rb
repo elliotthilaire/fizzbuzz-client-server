@@ -1,31 +1,29 @@
 class FavouritesController < ApplicationController
 
   def create
-    @favourite = Favourite.new(number: params[:number])
+    @favourite = Favourite.new(favourite_params)
 
-    respond_to do |format|
-      if @favourite.save
-
-        format.html { redirect_back notice: 'Favourite added.', fallback_location: root_url }
-        format.json { render json: @favourite, status: :created }
-      else
-        format.html { redirect_to :back, notice: @favourite.errors }
-        format.json { render json: @favourite.errors, status: :unprocessable_entity }
-      end
+    if @favourite.save
+      redirect_back notice: 'Favourite added.', fallback_location: root_path
+    else
+      redirect_back notice: @favourite.errors, fallback_location: root_path
     end
+
   end
 
   def destroy
-    @favourite = Favourite.find_by(number: params[:number])
+    @favourite = Favourite.find_by(favourite_params)
 
-    respond_to do |format|
-      if @favourite.destroy
-        format.html { redirect_back notice: 'Favourite removed.', fallback_location: root_url }
-        format.json { head :no_content }
-      else
-        format.html { render 'what'}
-        format.json { render json: @favourite.errors, status: :unprocessable_entity }
-      end
+    if @favourite.destroy
+      redirect_back notice: 'Favourite removed.', fallback_location: root_path
+    else
+      redirect_back notice: @favourite.errors, fallback_location: root_path
     end
+  end
+
+  private
+
+  def favourite_params
+    params.permit(:number)
   end
 end
