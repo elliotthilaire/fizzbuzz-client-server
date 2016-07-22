@@ -19,7 +19,6 @@ It is written in Go using the Cobra CLI library.`,
 // Uncomment the following line if your bare application
 // has an action associated with it:
 //	Run: func(cmd *cobra.Command, args []string) { },
-
 }
 
 // Execute adds all child commands to the root command sets flags appropriately.
@@ -37,9 +36,5 @@ func init() {
 	// will be global for your application.
 
 	RootCmd.PersistentFlags().StringVar(&host, "host", "localhost:3000", "fizzbuzz server")
-
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	//RootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 

@@ -18,8 +18,8 @@ Fetches a page of fizzbuzz results from the fizzbuzz server.
 Displays favourite results with cake.`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
-		fmt.Println("list called")
+
+		fmt.Println("getting fizzbuzzes from", host)
 
 		fizzbuzzutil.List(page, per_page)
 	},
