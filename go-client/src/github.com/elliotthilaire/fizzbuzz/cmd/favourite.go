@@ -11,12 +11,12 @@ var favouriteCmd = &cobra.Command{
 	Use:   "favourite NUMBER",
 	Short: "mark a number as a favourite",
 	Long: `Marks a fizzbuzz results with cake
-to show that you like it,
-and that is in fact, not a lie.`,
+to show that you like it and that,
+it is in fact, not a lie.`,
 
 	Run: func(cmd *cobra.Command, args []string) {
 
-		fmt.Println("favourite called", host)
+    fmt.Println("adding favourites to ", host)
 
     for _,number := range args {
    	  fizzbuzzutil.AddFavourite(number)
@@ -26,6 +26,4 @@ and that is in fact, not a lie.`,
 
 func init() {
 	RootCmd.AddCommand(favouriteCmd)
-
-	favouriteCmd.Flags().BoolP("delete", "d", false, "Deletes the number as a favourite")
 }

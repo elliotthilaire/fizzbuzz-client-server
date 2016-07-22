@@ -1,18 +1,15 @@
-package main
+
+package fizzbuzzutil
 
 import (
   "fmt"
   "log"
   "net/http"
   "net/url"
+ // "strconv"
 )
 
-func main() {
-  number := "1"
-  delete_favourite(number)
-}
-
-func delete_favourite(number string) {
+func DeleteFavourite(number string) {
 
   safeNumber := url.QueryEscape(number)
 
@@ -46,5 +43,4 @@ func delete_favourite(number string) {
 
   fmt.Println(response.Status)
 }
-
 
