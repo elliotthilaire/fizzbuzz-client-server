@@ -1,18 +1,14 @@
-package main
+package fizzbuzzutil
 
 import (
   "fmt"
   "log"
   "net/http"
   "net/url"
+ // "strconv"
 )
 
-func main() {
-  number := "1"
-  add_favourite(number)
-}
-
-func add_favourite(number string) {
+func AddFavourite(number string) {
 
   safeNumber := url.QueryEscape(number)
 

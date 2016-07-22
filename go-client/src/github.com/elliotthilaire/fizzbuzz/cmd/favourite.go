@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
+	"github.com/elliotthilaire/fizzbuzz/fizzbuzzutil"
 )
 
 // favouriteCmd represents the favourite command
@@ -14,8 +15,12 @@ to show that you like it,
 and that is in fact, not a lie.`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
+
 		fmt.Println("favourite called", host)
+
+    for _,number := range args {
+   	  fizzbuzzutil.AddFavourite(number)
+    }
 	},
 }
 
