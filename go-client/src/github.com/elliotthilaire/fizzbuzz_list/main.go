@@ -10,10 +10,14 @@ import (
 )
 
 func main() {
-
   page := "1"
   per_page := "100"
 
+  fetch_fizzbuzzes(page, per_page)
+}
+
+
+func fetch_fizzbuzzes(page string, per_page string ) {
   safePage := url.QueryEscape(page)
   safePerPage := url.QueryEscape(per_page)
 
@@ -57,7 +61,6 @@ func main() {
     log.Println(err)
     return
   }
-
 
   for _,element := range fizzbuzzes {
     fmt.Println(element.Number, ": ", element.Output)
