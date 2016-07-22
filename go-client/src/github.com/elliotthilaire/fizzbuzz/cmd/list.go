@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
+	"github.com/elliotthilaire/fizzbuzz/fizzbuzzutil"
 )
 
 var page int
@@ -19,6 +20,8 @@ Displays favourite results with cake.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
 		fmt.Println("list called")
+
+		fizzbuzzutil.List(page, per_page)
 	},
 }
 

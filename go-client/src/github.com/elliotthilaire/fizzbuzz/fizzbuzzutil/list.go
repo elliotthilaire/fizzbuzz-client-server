@@ -1,5 +1,4 @@
-
-package main
+package fizzbuzzutil
 
 import (
   "fmt"
@@ -7,19 +6,15 @@ import (
   "log"
   "net/http"
   "net/url"
+  "strconv"
 )
 
-func main() {
-  page := "1"
-  per_page := "100"
+func List(page int, per_page int ) {
+  pageAsString := strconv.Itoa(page)
+  perPageAsString := strconv.Itoa(per_page)
 
-  fetch_fizzbuzzes(page, per_page)
-}
-
-
-func fetch_fizzbuzzes(page string, per_page string ) {
-  safePage := url.QueryEscape(page)
-  safePerPage := url.QueryEscape(per_page)
+  safePage := url.QueryEscape(pageAsString)
+  safePerPage := url.QueryEscape(perPageAsString)
 
   type Fizzbuzz struct {
     Number int `json:"number"`
@@ -27,7 +22,7 @@ func fetch_fizzbuzzes(page string, per_page string ) {
     Favourite bool `json:"favourite"`
   }
 
-  url := fmt.Sprintf("http://localhost:3000/api/v1/fizzbuzzes.json?page=%s&per_page=%s", safePage, safePerPage)
+  url := fmt.Sprintf("http://localhost:3000/api/v1/fizzbuzzes?page=%s&per_page=%s", safePage, safePerPage)
 
   request, err := http.NewRequest("GET", url, nil)
   if err != nil {
