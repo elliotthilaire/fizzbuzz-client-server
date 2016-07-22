@@ -1,6 +1,6 @@
 module Api
   module V1
-    class FavouritesController < ApplicationController
+    class FavouritesController < Api::BaseApiController
 
       def create
         @favourite = Favourite.new(favourite_params)

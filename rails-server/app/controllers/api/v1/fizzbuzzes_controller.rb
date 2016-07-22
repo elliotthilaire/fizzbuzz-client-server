@@ -1,6 +1,6 @@
 module Api
   module V1
-    class FizzbuzzesController < ApplicationController
+    class FizzbuzzesController < Api::BaseApiController
 
       def index
         page = params[:page] || 1
