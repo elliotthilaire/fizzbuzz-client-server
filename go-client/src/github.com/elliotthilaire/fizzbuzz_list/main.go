@@ -1,13 +1,21 @@
+
 package main
 
 import (
   "fmt"
   "encoding/json"
-  "strings"
   "log"
+  "net/http"
+  "net/url"
 )
 
 func main() {
+
+  page := "1"
+  per_page := "100"
+
+  safePage := url.QueryEscape(page)
+  safePerPage := url.QueryEscape(per_page)
 
   type Fizzbuzz struct {
     Number int `json:"number"`
@@ -15,30 +23,44 @@ func main() {
     Favourite bool `json:"favourite"`
   }
 
-  response := `[
-    {
-      "number": 1,
-      "output": "1",
-      "favourite": true
-    },
-    {
-      "number": 2,
-      "output": "2",
-      "favourite": false
-    },
-    {
-      "number": 2,
-      "output": "Fizz",
-      "favourite": true
-    }]`
+  url := fmt.Sprintf("http://localhost:3000/api/v1/fizzbuzzes.json?page=%s&per_page=%s", safePage, safePerPage)
 
-    var fizzbuzzes []Fizzbuzz
+  // Build the request
+  req, err := http.NewRequest("GET", url, nil)
+  if err != nil {
+    log.Fatal("NewRequest: ", err)
+    return
+  }
 
-    if err := json.NewDecoder(strings.NewReader(response)).Decode(&fizzbuzzes); err != nil {
-      log.Println(err)
-    }
+  // For control over HTTP client headers,
+  // redirect policy, and other settings,
+  // create a Client
+  // A Client is an HTTP client
+  client := &http.Client{}
 
-    for _,element := range fizzbuzzes {
-      fmt.Println(element.Number, ": ", element.Output)
-    }
+  // Send the request via a client
+  // Do sends an HTTP request and
+  // returns an HTTP response
+  resp, err := client.Do(req)
+  if err != nil {
+    log.Fatal("Do: ", err)
+    return
+  }
+
+  // Callers should close resp.Body
+  // when done reading from it
+  // Defer the closing of the body
+  defer resp.Body.Close()
+
+  var fizzbuzzes []Fizzbuzz
+
+  if err := json.NewDecoder(resp.Body).Decode(&fizzbuzzes); err != nil {
+    log.Println(err)
+    return
+  }
+
+
+  for _,element := range fizzbuzzes {
+    fmt.Println(element.Number, ": ", element.Output)
+  }
 }
