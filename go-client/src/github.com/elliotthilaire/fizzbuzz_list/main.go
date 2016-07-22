@@ -25,8 +25,7 @@ func main() {
 
   url := fmt.Sprintf("http://localhost:3000/api/v1/fizzbuzzes.json?page=%s&per_page=%s", safePage, safePerPage)
 
-  // Build the request
-  req, err := http.NewRequest("GET", url, nil)
+  request, err := http.NewRequest("GET", url, nil)
   if err != nil {
     log.Fatal("NewRequest: ", err)
     return
@@ -41,7 +40,7 @@ func main() {
   // Send the request via a client
   // Do sends an HTTP request and
   // returns an HTTP response
-  resp, err := client.Do(req)
+  response, err := client.Do(request)
   if err != nil {
     log.Fatal("Do: ", err)
     return
@@ -50,11 +49,11 @@ func main() {
   // Callers should close resp.Body
   // when done reading from it
   // Defer the closing of the body
-  defer resp.Body.Close()
+  defer response.Body.Close()
 
   var fizzbuzzes []Fizzbuzz
 
-  if err := json.NewDecoder(resp.Body).Decode(&fizzbuzzes); err != nil {
+  if err := json.NewDecoder(response.Body).Decode(&fizzbuzzes); err != nil {
     log.Println(err)
     return
   }
