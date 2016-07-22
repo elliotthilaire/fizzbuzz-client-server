@@ -3,7 +3,7 @@ class Fizzbuzz
 
   def initialize(number, favourites: [])
     @number = number
-    @output = Fizzbuzzer.call(number)
+    @output = String(Fizzbuzzer.call(number))
     @favourite = favourites.include? number
   end
 end
