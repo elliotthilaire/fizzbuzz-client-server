@@ -63,6 +63,16 @@ func fetch_fizzbuzzes(page string, per_page string ) {
   }
 
   for _,element := range fizzbuzzes {
-    fmt.Println(element.Number, ": ", element.Output)
+    favourite := emojify(element.Favourite)
+    fmt.Println(element.Number, ": ", element.Output, favourite)
   }
+
 }
+
+func emojify(value bool) (string) {
+  emoji := ""
+  if value { emoji = "\U0001f370" }
+  return emoji
+}
+
+
