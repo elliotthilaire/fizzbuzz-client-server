@@ -5,7 +5,6 @@ import (
   "io"
   "net/http"
   "log"
-
 )
 
 type Api struct {
@@ -44,6 +43,8 @@ func (api *Api) request(action string, apiPath string, body io.Reader) (*http.Re
     log.Fatal("Do: ", err)
     //return
   }
+
+  defer response.Body.Close()
 
   return response
 }

@@ -3,7 +3,8 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"github.com/elliotthilaire/fizzbuzz/fizzbuzzutil"
+
+	"fizzbuzz-client-server/fizzbuzz/fizzbuzzutil"
 )
 
 // favouriteCmd represents the favourite command

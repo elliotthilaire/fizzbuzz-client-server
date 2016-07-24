@@ -8,8 +8,6 @@ import (
   "strconv"
 )
 
-
-
 func (api *Api) List(page int, per_page int) {
   pageAsString := strconv.Itoa(page)
   perPageAsString := strconv.Itoa(per_page)
