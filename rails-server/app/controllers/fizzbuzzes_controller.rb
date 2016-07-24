@@ -1,8 +1,8 @@
 class FizzbuzzesController < ApplicationController
 
   def index
-    page = params[:page] || 1
-    per_page = params[:per_page] || 100
+    page = sanitized_page_param(params[:page], default: 1)
+    per_page = sanitized_page_param(params[:per_page], default: 100)
 
     favourites = Favourite.all.map(&:number)
 
@@ -11,5 +11,12 @@ class FizzbuzzesController < ApplicationController
     end
 
     render :index
+  end
+
+private
+  def sanitized_page_param(param, default:)
+      Integer(param)
+    rescue
+      default
   end
 end
