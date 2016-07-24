@@ -11,7 +11,7 @@ var per_page int
 
 // listCmd represents the list command
 var listCmd = &cobra.Command{
-	Use:   "list [--page N] [--per_page N]",
+	Use:   "list [--page N] [--per-page N]",
 	Short: "list a page of of fizzbuzz results",
 	Long: `
 Fetches a page of fizzbuzz results from the fizzbuzz server.
