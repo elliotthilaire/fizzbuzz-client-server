@@ -6,7 +6,7 @@ import (
   "github.com/elliotthilaire/fizzbuzz/fizzbuzzutil"
 )
 
-// removeCmd represents the favourite command
+// unfavouriteCmd represents the unfavourite command
 var unfavouriteCmd = &cobra.Command{
   Use:   "unfavourite NUMBER",
   Short: "remove numbers from your favourites",
@@ -16,8 +16,10 @@ var unfavouriteCmd = &cobra.Command{
 
     fmt.Println("favourite called", host)
 
+    fizzbuzz := fizzbuzzutil.Api{Host: host, Port: port}
+
     for _,number := range args {
-      fizzbuzzutil.DeleteFavourite(number)
+      fizzbuzz.DeleteFavourite(number)
     }
   },
 }

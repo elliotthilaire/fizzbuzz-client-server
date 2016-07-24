@@ -9,7 +9,8 @@ import (
   "strconv"
 )
 
-func List(page int, per_page int ) {
+func (api *Api) List(page int, per_page int) {
+
   pageAsString := strconv.Itoa(page)
   perPageAsString := strconv.Itoa(per_page)
 
@@ -22,7 +23,8 @@ func List(page int, per_page int ) {
     Favourite bool `json:"favourite"`
   }
 
-  url := fmt.Sprintf("http://localhost:3000/api/v1/fizzbuzzes?page=%s&per_page=%s", safePage, safePerPage)
+  apiPath := fmt.Sprintf("fizzbuzzes?page=%s&per_page=%s", safePage, safePerPage)
+  url := api.url(apiPath)
 
   request, err := http.NewRequest("GET", url, nil)
   if err != nil {

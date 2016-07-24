@@ -6,14 +6,14 @@ import (
   "log"
   "net/http"
   "net/url"
- // "strconv"
 )
 
-func DeleteFavourite(number string) {
+func (api *Api) DeleteFavourite(number string) {
 
   safeNumber := url.QueryEscape(number)
 
-  url := fmt.Sprintf("http://localhost:3000/api/v1/favourites/%s", safeNumber)
+  apiPath := fmt.Sprintf("favourites/%s", safeNumber)
+  url := api.url(apiPath)
 
   request, err := http.NewRequest("DELETE", url, nil)
   if err != nil {

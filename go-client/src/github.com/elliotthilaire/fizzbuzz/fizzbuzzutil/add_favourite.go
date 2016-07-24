@@ -5,14 +5,13 @@ import (
   "log"
   "net/http"
   "net/url"
- // "strconv"
 )
 
-func AddFavourite(number string) {
-
+func (api *Api) AddFavourite(number string) {
   safeNumber := url.QueryEscape(number)
 
-  url := fmt.Sprintf("http://localhost:3000/api/v1/favourites?number=%s", safeNumber)
+  apiPath := fmt.Sprintf("favourites?number=%s", safeNumber)
+  url := api.url(apiPath)
 
   request, err := http.NewRequest("POST", url, nil)
   if err != nil {

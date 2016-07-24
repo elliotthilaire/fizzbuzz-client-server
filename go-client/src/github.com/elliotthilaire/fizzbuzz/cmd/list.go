@@ -13,15 +13,15 @@ var per_page int
 var listCmd = &cobra.Command{
 	Use:   "list [--page N] [--per-page N]",
 	Short: "list a page of of fizzbuzz results",
-	Long: `
-Fetches a page of fizzbuzz results from the fizzbuzz server.
+	Long: `Fetches a page of fizzbuzz results from the fizzbuzz server.
 Displays favourite results with cake.`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-
 		fmt.Println("getting fizzbuzzes from", host)
 
-		fizzbuzzutil.List(page, per_page)
+    fizzbuzz := fizzbuzzutil.Api{Host: host, Port: port}
+
+    fizzbuzz.List(page, per_page)
 	},
 }
 

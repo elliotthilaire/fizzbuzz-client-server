@@ -15,11 +15,12 @@ to show that you like it and that,
 it is in fact, not a lie.`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-
     fmt.Println("adding favourites to ", host)
 
+    fizzbuzz := fizzbuzzutil.Api{Host: host, Port: port}
+
     for _,number := range args {
-   	  fizzbuzzutil.AddFavourite(number)
+   	  fizzbuzz.AddFavourite(number)
     }
 	},
 }

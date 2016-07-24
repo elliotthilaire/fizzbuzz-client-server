@@ -15,11 +15,7 @@ var RootCmd = &cobra.Command{
 	Short: "Interact with a fizzbuzz server",
 	Long: `fizzbuzz is a CLI client for a fizzbuzz server.
 You can list pages of fizzbuzz results and also mark your favourites.
-
 It is written in Go using the Cobra CLI library.`,
-// Uncomment the following line if your bare application
-// has an action associated with it:
-//	Run: func(cmd *cobra.Command, args []string) { },
 }
 
 // Execute adds all child commands to the root command sets flags appropriately.
