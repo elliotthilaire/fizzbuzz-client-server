@@ -7,11 +7,17 @@ import (
 
 // unfavouriteCmd represents the unfavourite command
 var unfavouriteCmd = &cobra.Command{
-  Use:   "unfavourite NUMBER",
-  Short: "remove numbers from your favourites",
-  Long: `Removes the cake from a number`,
+  Use:   "unfavourite NUMBER [NUMBER..]",
+  Short: "unmark numbers as favourites",
+  Long: `Removes cake from numbers passed in as arguments`,
 
   Run: func(cmd *cobra.Command, args []string) {
+
+    if len(args) == 0 {
+      cmd.Help()
+      return
+    }
+
     fizzbuzz := fizzbuzzutil.Api{Host: host, Port: port}
 
     for _,number := range args {
