@@ -1,6 +1,6 @@
 <h1>Fizzbuzz</h1>
 
-<%= render partial: 'page', locals: { page: @page_of_fizzbuzzes } %>
+<%= render partial: 'paginator', locals: { page: @page_of_fizzbuzzes } %>
 
 <% @page_of_fizzbuzzes.each do |fizzbuzz| %>
   <%= render partial: 'fizzbuzz', locals: { fizzbuzz: fizzbuzz } %>
