@@ -7,6 +7,7 @@ import (
 )
 
 var host string
+var port string
 
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
@@ -35,6 +36,6 @@ func init() {
 	// Cobra supports Persistent Flags, which, if defined here,
 	// will be global for your application.
 
-	RootCmd.PersistentFlags().StringVar(&host, "host", "localhost:3000", "fizzbuzz server")
+	RootCmd.PersistentFlags().StringVar(&host, "host", "localhost", "fizzbuzz server host")
+	RootCmd.PersistentFlags().StringVar(&port, "port", "3000", "fizzbuzz server port")
 }
-
