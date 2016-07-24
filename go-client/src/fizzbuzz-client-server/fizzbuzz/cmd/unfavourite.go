@@ -8,7 +8,7 @@ import (
 // unfavouriteCmd represents the unfavourite command
 var unfavouriteCmd = &cobra.Command{
   Use:   "unfavourite NUMBER [NUMBER..]",
-  Short: "unmark numbers as favourites",
+  Short: "unmark favourited numbers",
   Long: `Removes cake from numbers passed in as arguments`,
 
   Run: func(cmd *cobra.Command, args []string) {

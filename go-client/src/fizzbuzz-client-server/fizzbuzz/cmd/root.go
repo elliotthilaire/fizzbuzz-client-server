@@ -16,7 +16,12 @@ var RootCmd = &cobra.Command{
 	Long: `fizzbuzz is a CLI client for a fizzbuzz server.
 You can list pages of fizzbuzz results and mark your favourites.
 
-Favourites are marked with cake to show they are not a lie.`,
+Favourites are marked with cake to show they are not a lie.
+
+Examples:
+fizzbuzz list --page 2 --per-page 10
+fizzbuzz favourite 1 2 3 7 11
+fizzbuzz unfavourite 1 11`,
 }
 
 // Execute adds all child commands to the root command sets flags appropriately.
