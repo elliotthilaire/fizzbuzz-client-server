@@ -12,4 +12,12 @@ RSpec.describe Favourite, type: :model do
     favourite = Favourite.new(number: 'not_a_number')
     expect(favourite).to be_invalid
   end
+
+  context 'with the maximum expected value of 100000000000' do
+    it 'saves the record' do
+      favourite = Favourite.create(number: 100000000000)
+      expect(favourite).to be_valid
+    end
+  end
+
 end
