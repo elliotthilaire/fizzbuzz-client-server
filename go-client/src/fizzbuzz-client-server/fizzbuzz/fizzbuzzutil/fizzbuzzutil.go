@@ -2,9 +2,9 @@ package fizzbuzzutil
 
 import (
   "fmt"
-  "io"
   "net/http"
   "log"
+  "bytes"
 )
 
 type Api struct {
@@ -19,15 +19,19 @@ func (api *Api) url(apiPath string) string {
 }
 
 // request wraps creating and running a http client
-func (api *Api) request(action string, apiPath string, body io.Reader) (*http.Response)  {
+func (api *Api) request(action string, apiPath string, requestBody string) (*http.Response)  {
 
   url := api.url(apiPath)
+  requestBodyBytes := []byte(requestBody)
 
-  request, err := http.NewRequest(action, url, nil)
+  request, err := http.NewRequest(action, url, bytes.NewBuffer(requestBodyBytes))
   if err != nil {
     log.Fatal("NewRequest: ", err)
     //return
   }
+
+  request.Header.Add("Content-Type", "application/json")
+  request.Header.Add("Accept", "application/json")
 
   // For control over HTTP client headers,
   // redirect policy, and other settings,

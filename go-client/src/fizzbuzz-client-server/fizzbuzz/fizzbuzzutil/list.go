@@ -22,7 +22,7 @@ func (api *Api) List(page int, per_page int) {
   }
 
   apiPath := fmt.Sprintf("fizzbuzzes?page=%s&per_page=%s", safePage, safePerPage)
-  response := api.request("GET", apiPath, nil)
+  response := api.request("GET", apiPath, "")
 
   var fizzbuzzes []Fizzbuzz
 
