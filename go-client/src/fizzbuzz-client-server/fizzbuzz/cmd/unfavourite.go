@@ -1,9 +1,7 @@
 package cmd
 
 import (
-  "fmt"
   "github.com/spf13/cobra"
-
   "fizzbuzz-client-server/fizzbuzz/fizzbuzzutil"
 )
 
@@ -14,9 +12,6 @@ var unfavouriteCmd = &cobra.Command{
   Long: `Removes the cake from a number`,
 
   Run: func(cmd *cobra.Command, args []string) {
-
-    fmt.Println("favourite called", host)
-
     fizzbuzz := fizzbuzzutil.Api{Host: host, Port: port}
 
     for _,number := range args {

@@ -13,5 +13,12 @@ func (api *Api) AddFavourite(number string) {
 
   response := api.request("POST", apiPath, requestBody)
 
-  fmt.Println(response.Status)
+  switch response.StatusCode {
+    case 201:
+        fmt.Println(safeNumber, "favourited")
+    case 422:
+        fmt.Println(safeNumber, "already favourited")
+    case 400:
+        fmt.Println("you can't favourite", safeNumber)
+    }
 }

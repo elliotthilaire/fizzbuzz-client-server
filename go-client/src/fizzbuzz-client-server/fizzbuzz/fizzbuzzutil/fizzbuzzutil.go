@@ -27,7 +27,6 @@ func (api *Api) request(action string, apiPath string, requestBody string) (*htt
   request, err := http.NewRequest(action, url, bytes.NewBuffer(requestBodyBytes))
   if err != nil {
     log.Fatal("NewRequest: ", err)
-    //return
   }
 
   request.Header.Add("Content-Type", "application/json")
@@ -45,10 +44,7 @@ func (api *Api) request(action string, apiPath string, requestBody string) (*htt
   response, err := client.Do(request)
   if err != nil {
     log.Fatal("Do: ", err)
-    //return
   }
-
-  defer response.Body.Close()
 
   return response
 }
