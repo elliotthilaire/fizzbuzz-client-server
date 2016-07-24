@@ -1,3 +1,2 @@
-class Api::BaseApiController < ActionController::Base
-  protect_from_forgery with: :null_session
+class Api::BaseApiController < ActionController::API
 end
