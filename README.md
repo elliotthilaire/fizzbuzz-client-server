@@ -36,7 +36,7 @@ bin/setup
 rails server
 ```
 
-Run specs with 
+Run specs with
 ```
 cd rails-server
 rspec --format doc
@@ -44,15 +44,16 @@ rspec --format doc
 
 ## The client
 
-Launch the prebuilt binary with 
+Launch the prebuilt binary with
 ```
 cd go-client
-bin/fizzbuzz 
+bin/fizzbuzz
 ```
 
 Alternitavely run from the source code with
 ```
 cd go-client
+echo GOPATH=`pwd`
 cd src/fizzbizz-client-server/fizzbuzz
 go run main.go
 ```
