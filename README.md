@@ -1,8 +1,11 @@
 # FizzBuzz Rails
 
+Code for a coding challenge.
+
 Status: Compelete with some rough edges.
 
-Code for a coding challenge.
+I wrote the funtionality of calculating pages of fizzbuzz before starting the Rails app.
+I have left this code and tests in their original folder and then symlinked them into the Rails app to show the separation.
 
 ### Highlights
 
