@@ -1,5 +1,3 @@
-require_relative "../lib/page"
-
 RSpec.describe Page, "#new" do
 
   it 'fetches pages of items using supplied block' do
@@ -18,6 +16,9 @@ RSpec.describe Page, "#new" do
   end
 
   it 'is enumerable' do
+    page = Page.new {'item'}
+    expect(page).to be_a_kind_of(Enumerable)
+    expect(page).to respond_to(:each)
   end
 
   context 'with default arguments' do

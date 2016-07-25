@@ -1,5 +1,3 @@
-require_relative "../lib/fizzbuzzer"
-
 RSpec.describe Fizzbuzzer, "#call" do
   context "with an number divisible by 3" do
     it "returns 'Fizz'" do

@@ -4,8 +4,7 @@ Code for a coding challenge.
 
 Status: Compelete with some rough edges.
 
-I wrote the funtionality of calculating pages of fizzbuzz before starting the Rails app.
-I have left this code and tests in their original folder and then symlinked them into the Rails app to show the separation.
+I wrote the functionality of calculating pages of fizzbuzz results independant of the Rails app. To make inspecting the code easier (by keeping everything close) I have copied these into the models folder. In a larger project PORO's would be organised into gems, lib, or services.
 
 ### Highlights
 
