@@ -4,7 +4,7 @@ Code for a coding challenge.
 
 Status: Compelete with some rough edges.
 
-I wrote the functionality of calculating pages of fizzbuzz results independant of the Rails app. To make inspecting the code easier (by keeping everything close) I have copied these into the models folder. In a larger project PORO's would be organised into gems, lib, or services.
+I wrote the functionality of calculating pages of fizzbuzz results independant of the Rails app. These classes have been put into the services folder.
 
 ### Highlights
 
